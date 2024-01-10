@@ -1,7 +1,12 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Product = ({ userData, deleteItem }) => {
+  const navigate = useNavigate();
+  const editItem = (id) => {
+    navigate(`/update/${id}`);
+  };
   return (
     <>
       {userData.map((elem) => (
@@ -28,6 +33,9 @@ const Product = ({ userData, deleteItem }) => {
           <td>
             <Button variant="danger" onClick={() => deleteItem(elem.id)}>
               Delete
+            </Button>
+            <Button variant="primary" onClick={() => editItem(elem.id)}>
+              Edit Item
             </Button>
           </td>
         </tr>

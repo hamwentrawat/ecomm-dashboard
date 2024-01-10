@@ -25,7 +25,7 @@ function App() {
     const lsdata = localStorage.getItem("ShopList");
     if (lsdata) {
       console.log("lsdata", lsdata);
-      // return JSON.parse(lsdata);
+      return JSON.parse(lsdata);
     }
   };
   return (
@@ -36,7 +36,10 @@ function App() {
           path="/add"
           element={<AddProduct data={userData} getDataFromLS={getDataFromLS} />}
         />
-        <Route path="/update" element={<UpdateProduct />} />
+        <Route
+          path="/update/:id"
+          element={<UpdateProduct userData={userData} />}
+        />
         <Route
           path="/product_list"
           element={<ProductList userData={userData} deleteItem={deleteItem} />}
